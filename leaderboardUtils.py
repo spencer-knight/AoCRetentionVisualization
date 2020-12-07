@@ -23,10 +23,12 @@ def getLeaderboard():
     dayInfo = []
     driver.get( "https://adventofcode.com/2020/stats")
     aTags = driver.find_elements_by_tag_name("a")
+    # Loop through a tags and add only the ones with a * to the list with info. 
     for a in aTags:
         if '*' in a.text:
             dayInfo.append( a.text.split())
+
+    # Sort it so that it starts at day 1
     dayInfo = sorted(dayInfo, key = lambda day: int(day[0]))
 
     return dayInfo
-    #print( dayInfo)

@@ -26,6 +26,8 @@ with plt.rc_context( {"axes.edgecolor":aocText, "xtick.color":aocText, "ytick.co
     for item in leaderboard:
         days.append( int(item[0]))
     
+    # Bad way of doing things, sue me.
+    # Grabbing data and putting it into lists
     goldStars = []
     for item in leaderboard:
         goldStars.append( int(item[1]))
@@ -33,10 +35,6 @@ with plt.rc_context( {"axes.edgecolor":aocText, "xtick.color":aocText, "ytick.co
     silverStars = []
     for item in leaderboard:
         silverStars.append( int(item[2]))
-
-    print(days)
-    print(goldStars)
-    print(silverStars)
     
     # plot the data with corresponding color.
     plt.plot( days, goldStars, aocGold, label="Gold Stars (Both puzzles completed)", marker="*")
@@ -45,15 +43,6 @@ with plt.rc_context( {"axes.edgecolor":aocText, "xtick.color":aocText, "ytick.co
     #label axes and make them white
     plt.ylabel( "Users", color = aocText)
     plt.xlabel( "Day", color = aocText)
-
-    # set axis limits and steps
-    #plt.axis([days[0], days[len(days) - 1], sorted(silverStars)[0], sorted(goldStars)[len(goldStars) - 1]])
-    #plt.xlim(0, sorted(goldStars)[len(goldStars) - 1])
-    #plt.ylim(1, days[len(days) - 1])
-    
-    #plt.yscale = scale.LinearScale
-    #plt.xscale = scale.LinearScale
-
 
     # Make legend with white text
     leg = plt.legend( loc="upper right")
@@ -65,4 +54,5 @@ with plt.rc_context( {"axes.edgecolor":aocText, "xtick.color":aocText, "ytick.co
 
 
 # I don"t know why I"m even commenting this part.
-plt.show()
+#plt.show()
+plt.savefig("fig.png")
